@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { portfolioData } from "@/app/data/portfolio";
 
 interface Milestone {
@@ -16,11 +16,10 @@ interface Milestone {
 export default function GrowthTree() {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Manual Order: Newest (Top) -> Oldest (Bottom)
     const milestones: Milestone[] = [
         {
             type: "education",
-            year: portfolioData.about.education[0].year, // 2025-2027
+            year: portfolioData.about.education[0].year,
             title: portfolioData.about.education[0].degree,
             subtitle: portfolioData.about.education[0].school,
             description: portfolioData.about.education[0].description,
@@ -28,7 +27,7 @@ export default function GrowthTree() {
         },
         {
             type: "experience",
-            year: portfolioData.about.experience[0].year, // 2023-2025
+            year: portfolioData.about.experience[0].year,
             title: portfolioData.about.experience[0].role,
             subtitle: portfolioData.about.experience[0].company,
             description: portfolioData.about.experience[0].description,
@@ -36,7 +35,7 @@ export default function GrowthTree() {
         },
         {
             type: "experience",
-            year: portfolioData.about.experience[1].year, // 2021-2022
+            year: portfolioData.about.experience[1].year,
             title: portfolioData.about.experience[1].role,
             subtitle: portfolioData.about.experience[1].company,
             description: portfolioData.about.experience[1].description,
@@ -44,7 +43,7 @@ export default function GrowthTree() {
         },
         {
             type: "education",
-            year: portfolioData.about.education[1].year, // 2019-2023
+            year: portfolioData.about.education[1].year,
             title: portfolioData.about.education[1].degree,
             subtitle: portfolioData.about.education[1].school,
             description: portfolioData.about.education[1].description,
@@ -54,35 +53,20 @@ export default function GrowthTree() {
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ["start center", "end center"]
+        offset: ["start end", "end start"]
     });
 
     const pathLength = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
     return (
-        <div ref={containerRef} className="relative w-full max-w-4xl mx-auto py-20">
-
+        <div ref={containerRef} className="relative w-full max-w-5xl mx-auto py-20 px-6">
             {/* SVG Line - Center */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-20 z-0 hidden md:block">
-                <svg className="w-full h-full text-gray-200 overflow-visible" preserveAspectRatio="none">
-                    {/* Background Path */}
-                    <path
-                        d="M 40 0 V 1000"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                        vectorEffect="non-scaling-stroke"
-                    />
-                    {/* Animated Path */}
-                    <motion.path
-                        d="M 40 0 V 1000"
-                        stroke="var(--accent-color)"
-                        strokeWidth="2"
-                        fill="none"
-                        style={{ pathLength }}
-                        vectorEffect="non-scaling-stroke"
-                    />
-                </svg>
+            <div className="absolute top-0 left-6 md:left-1/2 md:-translate-x-1/2 h-full w-1 z-0">
+                <div className="w-full h-full bg-[#E8E1D5]/20 rounded-full" />
+                <motion.div
+                    style={{ scaleY: scrollYProgress, originY: 0 }}
+                    className="absolute top-0 left-0 w-full bg-[#E8E1D5] rounded-full"
+                />
             </div>
 
             {/* Nodes */}
@@ -90,32 +74,35 @@ export default function GrowthTree() {
                 {milestones.map((item, index) => {
                     const isLeft = index % 2 === 0;
                     return (
-                        <div key={item.id} className={`flex flex-col md:flex-row items-center ${isLeft ? 'md:flex-row-reverse' : ''} gap-8 md:gap-0`}>
-
+                        <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center">
                             {/* Text Side */}
-                            <div className={`w-full md:w-1/2 ${isLeft ? 'md:text-left md:pl-16' : 'md:text-right md:pr-16'} text-center md:text-left`}>
-                                <h3 className="text-xl font-bold text-gray-900 mb-1">{item.title}</h3>
-                                <div className="text-gray-500 text-sm font-semibold uppercase tracking-wider mb-1">
+                            <motion.div
+                                initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                className={`w-full md:w-1/2 pl-12 md:pl-0 ${isLeft ? 'md:pr-24 md:text-right' : 'md:order-last md:pl-24 md:text-left'}`}
+                            >
+                                <span className="text-xs font-black uppercase tracking-[0.2em] text-[#E8E1D5]/60 mb-2 block">
+                                    {item.year}
+                                </span>
+                                <h3 className="text-2xl md:text-3xl font-black text-[#E8E1D5] mb-2 uppercase tracking-tighter">
+                                    {item.title}
+                                </h3>
+                                <div className="text-[#E8E1D5]/80 text-sm font-bold uppercase tracking-widest mb-4">
                                     {item.subtitle}
                                 </div>
-                                <div className="text-gray-400 text-xs font-medium uppercase tracking-wider mb-3">
-                                    {item.year}
-                                </div>
-                                <p className="text-gray-600 text-sm leading-relaxed">
+                                <p className="text-[#E8E1D5]/70 text-lg md:text-xl font-light leading-relaxed">
                                     {item.description}
                                 </p>
-                            </div>
+                            </motion.div>
 
                             {/* Center Node */}
-                            <div className="relative flex items-center justify-center w-8 h-8 shrink-0">
-                                <div className="w-4 h-4 rounded-full bg-gray-200 border-2 border-white shadow ring-2 ring-gray-100 group-hover:bg-[var(--accent-color)] transition-colors"></div>
-                                <motion.div
-                                    style={{ opacity: pathLength }} // Fade in based on scroll? Or just scale.
-                                    className="absolute inset-0 w-8 h-8 rounded-full border-2 border-[var(--accent-color)] opacity-0"
-                                />
+                            <div className="absolute left-6 md:left-1/2 -translate-x-1/2 flex items-center justify-center w-4 h-4 rounded-full bg-[#E8E1D5] shadow-[0_0_20px_rgba(232,225,213,0.5)] z-20">
+                                <div className="w-2 h-2 rounded-full bg-[#3B5249]" />
                             </div>
 
-                            {/* Empty Side for Balance */}
+                            {/* Empty Side for Balance on Desktop */}
                             <div className="hidden md:block w-1/2" />
                         </div>
                     );

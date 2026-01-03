@@ -20,10 +20,18 @@
   --font-sans: var(--font-inter);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  scroll-snap-type: y mandatory;
+  /* Offset for header */
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--sand);
+  color: var(--forest-green);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 @layer utilities {
@@ -34,12 +42,48 @@ body {
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(20px);
     }
 
     to {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  .text-huge {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    /* Matching the bold look in the reference */
+  }
+
+  .text-display {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+    /* Regular/Medium weight for secondary text */
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .section-container {
+    padding: 100px 24px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-snap-align: start;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
   }
 }

@@ -130,7 +130,7 @@ export const portfolioData = {
     ],
     contact: {
         email: "sahilvadhav@gmail.com",
-        web3formsKey: "YOUR_ACCESS_KEY_HERE", // Get yours from https://web3forms.com/
+        web3formsKey: "1395bb2a-0067-401c-8925-c10823831478", // Get yours from https://web3forms.com/
         //phone: "+1 (408) 555-0123", // Placeholder
         socialLinks: [
             {
@@ -149,6 +149,20 @@ export const portfolioData = {
                 platform: "Resume",
                 url: "/Resume_of_Sahil_Adhav.pdf",
             }
+        ]
+    },
+    interests: {
+        sports: [
+            { name: "Football (Soccer)", icon: "⚽", image: "/images/interests/sports/football.png" },
+            { name: "Formula 1", icon: "🏎️", image: "/images/interests/sports/f1.png" },
+            { name: "Tennis", icon: "🎾", image: "/images/interests/sports/tennis.png" },
+            { name: "Cricket", icon: "🏏", image: "/images/interests/sports/cricket.png" }
+        ],
+        media: [
+            { title: "Zindagi Na Milegi Dobara", type: "Movie", image: "/images/interests/media/znmd.png" },
+            { title: "Goodfellas", type: "Movie", image: "/images/interests/media/goodfellas.png" },
+            { title: "Breaking Bad", type: "Series", image: "/images/interests/media/breaking-bad.png" },
+            { title: "Better Call Saul", type: "Series", image: "/images/interests/media/better-call-saul.jpg" }
         ]
     }
 };

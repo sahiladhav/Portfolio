@@ -27,9 +27,10 @@ export default function ContactForm() {
                 },
                 body: JSON.stringify({
                     access_key: contact.web3formsKey,
+                    from_name: `Portfolio: ${formData.name}`,
                     name: formData.name,
                     email: formData.email,
-                    subject: formData.subject,
+                    subject: formData.subject || "New Message from Portfolio",
                     message: formData.message,
                 }),
             });
@@ -39,7 +40,6 @@ export default function ContactForm() {
             if (result.success) {
                 setStatus('success');
                 setFormData({ name: '', email: '', subject: '', message: '' });
-                // Reset success message after 5 seconds
                 setTimeout(() => setStatus('idle'), 5000);
             } else {
                 console.error('Submission failed:', result.message);
@@ -59,37 +59,38 @@ export default function ContactForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-lg bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <div>
-                <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all"
-                    placeholder="Your Name"
-                />
+        <form onSubmit={handleSubmit} className="space-y-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label htmlFor="name" className="block text-[10px] font-black uppercase tracking-[0.2em] text-[#3B5249]/50 mb-2">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full px-0 py-3 bg-transparent border-b-2 border-[#3B5249]/10 focus:border-[#3B5249] outline-none transition-all text-[#3B5249] font-bold text-lg placeholder:text-[#3B5249]/20"
+                        placeholder="Sahil Adhav"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="email" className="block text-[10px] font-black uppercase tracking-[0.2em] text-[#3B5249]/50 mb-2">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-0 py-3 bg-transparent border-b-2 border-[#3B5249]/10 focus:border-[#3B5249] outline-none transition-all text-[#3B5249] font-bold text-lg placeholder:text-[#3B5249]/20"
+                        placeholder="sahil@example.com"
+                    />
+                </div>
             </div>
 
             <div>
-                <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all"
-                    placeholder="john@example.com"
-                />
-            </div>
-
-            <div>
-                <label htmlFor="subject" className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Subject</label>
+                <label htmlFor="subject" className="block text-[10px] font-black uppercase tracking-[0.2em] text-[#3B5249]/50 mb-2">Subject</label>
                 <input
                     type="text"
                     id="subject"
@@ -97,42 +98,42 @@ export default function ContactForm() {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all"
-                    placeholder="Project Inquiry"
+                    className="w-full px-0 py-3 bg-transparent border-b-2 border-[#3B5249]/10 focus:border-[#3B5249] outline-none transition-all text-[#3B5249] font-bold text-lg placeholder:text-[#3B5249]/20"
+                    placeholder="Project Opportunity"
                 />
             </div>
 
             <div>
-                <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Message</label>
+                <label htmlFor="message" className="block text-[10px] font-black uppercase tracking-[0.2em] text-[#3B5249]/50 mb-2">Your Message</label>
                 <textarea
                     id="message"
                     name="message"
                     required
-                    rows={3}
+                    rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all resize-none"
-                    placeholder="How can I help you?"
+                    className="w-full px-0 py-3 bg-transparent border-b-2 border-[#3B5249]/10 focus:border-[#3B5249] outline-none transition-all text-[#3B5249] font-bold text-lg placeholder:text-[#3B5249]/20 resize-none"
+                    placeholder="Tell me about your project..."
                 />
             </div>
 
             <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="w-full py-3 bg-[var(--accent-color)] text-white text-sm font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-5 bg-[#3B5249] text-white text-xs font-black uppercase tracking-[0.3em] rounded-2xl hover:bg-[#2D3E35] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-[#3B5249]/20"
             >
                 {status === 'submitting' ? 'Sending...' : 'Send Message'}
             </button>
 
             {status === 'success' && (
-                <p className="text-green-600 text-xs text-center font-medium animate-fade-in">
-                    Message sent successfully! I'll get back to you soon.
+                <p className="text-green-600 text-xs text-center font-black uppercase tracking-widest animate-pulse">
+                    Message sent successfully!
                 </p>
             )}
 
             {status === 'error' && (
-                <p className="text-red-600 text-xs text-center font-medium animate-fade-in">
-                    Oops! Something went wrong. Please try again.
+                <p className="text-red-600 text-xs text-center font-black uppercase tracking-widest">
+                    Oops! Something went wrong.
                 </p>
             )}
         </form>
