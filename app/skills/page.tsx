@@ -57,7 +57,7 @@ export default function Skills() {
                                                 {skillIcon && (
                                                     <div className="w-6 h-6 md:w-7 md:h-7 flex-shrink-0 flex items-center justify-center">
                                                         <img
-                                                            src={`https://cdn.simpleicons.org/${skillIcon}`}
+                                                            src={skillIcon.startsWith('/') ? skillIcon : `https://cdn.simpleicons.org/${skillIcon}`}
                                                             alt=""
                                                             className="w-full h-full object-contain opacity-90 group-hover/skill:opacity-100 transition-opacity"
                                                             onError={(e) => {

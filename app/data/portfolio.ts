@@ -123,7 +123,7 @@ export const portfolioData = {
                 { name: "JIT (just-in-time)" },
                 { name: "Data Visualization" },
                 { name: "ERP (basics)" },
-                { name: "Tableau", icon: "tableau" }
+                { name: "Tableau", icon: "/logos/tableau.png" }
             ]
         },
         {
@@ -135,7 +135,7 @@ export const portfolioData = {
                 { name: "TypeScript", icon: "typescript" },
                 { name: "C++", icon: "cplusplus" },
                 { name: "HTML", icon: "html5" },
-                { name: "CSS", icon: "css3" }
+                { name: "CSS", icon: "/logos/css.png" }
             ]
         },
         {
@@ -143,21 +143,21 @@ export const portfolioData = {
             items: [
                 { name: "SQL (joins, validation)", icon: "mysql" },
                 { name: "R", icon: "r" },
-                { name: "Microsoft Excel", icon: "microsoftexcel" },
-                { name: "Power BI (basic)", icon: "powerbi" },
-                { name: "SharePoint", icon: "sharepoint" }
+                { name: "Microsoft Excel", icon: "/logos/excel.png" },
+                { name: "Power BI (basic)", icon: "/logos/powerbi.png" },
+                { name: "SharePoint", icon: "/logos/sharepoint.png" }
             ]
         },
         {
             category: "Tools",
             items: [
-                { name: "ServiceNow", icon: "servicenow" },
+                { name: "ServiceNow" },
                 { name: "GTM", icon: "googletagmanager" },
                 { name: "Jira", icon: "jira" },
                 { name: "Confluence", icon: "confluence" },
-                { name: "VS Code", icon: "visualstudiocode" },
-                { name: "Azure", icon: "azure" },
-                { name: "Outlook", icon: "microsoftoutlook" }
+                { name: "VS Code" },
+                { name: "Azure" },
+                { name: "Outlook" }
             ]
         }
     ],
