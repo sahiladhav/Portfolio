@@ -1,3 +1,4 @@
+"use client";
 import Header from '@/components/Header';
 import { portfolioData } from '@/app/data/portfolio';
 
@@ -42,16 +43,36 @@ export default function Skills() {
                                     </div>
                                 </div>
 
-                                {/* Skills Pills */}
-                                <div className="flex flex-wrap gap-2">
-                                    {section.items.map((skill) => (
-                                        <span
-                                            key={skill}
-                                            className={`px-3 py-1 ${colors.bg} ${colors.text} text-xs font-semibold rounded-full border ${colors.border} hover:scale-105 transition-all duration-300 cursor-default`}
-                                        >
-                                            {skill}
-                                        </span>
-                                    ))}
+                                {/* Skills Grid */}
+                                <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-12">
+                                    {section.items.map((skill) => {
+                                        const skillName = typeof skill === 'string' ? skill : skill.name;
+                                        const skillIcon = typeof skill !== 'string' ? skill.icon : null;
+
+                                        return (
+                                            <div
+                                                key={skillName}
+                                                className="flex items-center gap-4 py-1.5 transition-all duration-300 hover:translate-x-2 cursor-default group/skill"
+                                            >
+                                                {skillIcon && (
+                                                    <div className="w-6 h-6 md:w-7 md:h-7 flex-shrink-0 flex items-center justify-center">
+                                                        <img
+                                                            src={`https://cdn.simpleicons.org/${skillIcon}`}
+                                                            alt=""
+                                                            className="w-full h-full object-contain opacity-90 group-hover/skill:opacity-100 transition-opacity"
+                                                            onError={(e) => {
+                                                                e.currentTarget.style.display = 'none';
+                                                                e.currentTarget.parentElement!.style.display = 'none';
+                                                            }}
+                                                        />
+                                                    </div>
+                                                )}
+                                                <span className="text-xs md:text-base font-semibold text-[#3B5249]/80 group-hover/skill:text-[#3B5249] leading-tight">
+                                                    {skillName}
+                                                </span>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         );

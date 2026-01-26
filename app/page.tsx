@@ -199,15 +199,35 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-[#3B5249] mb-6 uppercase tracking-widest">
                     {section.category}
                   </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {section.items.map((skill) => (
-                      <span
-                        key={skill}
-                        className={`px-3 py-1.5 ${colors.bg} ${colors.text} text-xs font-semibold rounded-md border ${colors.border}/20 hover:bg-[#3B5249] hover:text-white transition-all cursor-default`}
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-6">
+                    {section.items.map((skill) => {
+                      const skillName = typeof skill === 'string' ? skill : skill.name;
+                      const skillIcon = typeof skill !== 'string' ? skill.icon : null;
+
+                      return (
+                        <div
+                          key={skillName}
+                          className="flex items-center gap-3 py-1 group/skill transition-all duration-300 hover:translate-x-1 cursor-default"
+                        >
+                          {skillIcon && (
+                            <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                              <img
+                                src={`https://cdn.simpleicons.org/${skillIcon}`}
+                                alt=""
+                                className="w-full h-full object-contain opacity-90 group-hover/skill:opacity-100 transition-opacity"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none';
+                                  e.currentTarget.parentElement!.style.display = 'none';
+                                }}
+                              />
+                            </div>
+                          )}
+                          <span className="text-xs md:text-sm font-medium text-[#3B5249]/80 group-hover/skill:text-[#3B5249] leading-tight">
+                            {skillName}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </motion.div>
               );

@@ -110,22 +110,55 @@ export const portfolioData = {
         {
             category: "Processes",
             items: [
-                "Lean/5S", "Gemba", "Kaizen", "Six Sigma (DMAIC)", "Kanban", "Scrum",
-                "VSM", "SOPs", "Supply Chain Planning", "Sprint Planning",
-                "JIT (just-in-time)", "Data Visualization", "ERP (basics)", "Tableau"
+                { name: "Lean/5S" },
+                { name: "Gemba" },
+                { name: "Kaizen" },
+                { name: "Six Sigma (DMAIC)" },
+                { name: "Kanban" },
+                { name: "Scrum" },
+                { name: "VSM" },
+                { name: "SOPs" },
+                { name: "Supply Chain Planning" },
+                { name: "Sprint Planning" },
+                { name: "JIT (just-in-time)" },
+                { name: "Data Visualization" },
+                { name: "ERP (basics)" },
+                { name: "Tableau", icon: "tableau" }
             ]
         },
         {
             category: "Programming",
-            items: ["Python", "C#/.NET", "Angular", "TypeScript", "C++", "HTML", "CSS"]
+            items: [
+                { name: "Python", icon: "python" },
+                { name: "C#/.NET", icon: "dotnet" },
+                { name: "Angular", icon: "angular" },
+                { name: "TypeScript", icon: "typescript" },
+                { name: "C++", icon: "cplusplus" },
+                { name: "HTML", icon: "html5" },
+                { name: "CSS", icon: "css3" }
+            ]
         },
         {
             category: "Database",
-            items: ["SQL (joins, validation)", "R", "Microsoft Excel", "Power BI (basic)", "SharePoint"]
+            items: [
+                { name: "SQL (joins, validation)", icon: "mysql" },
+                { name: "R", icon: "r" },
+                { name: "Microsoft Excel", icon: "microsoftexcel" },
+                { name: "Power BI (basic)", icon: "powerbi" },
+                { name: "SharePoint", icon: "sharepoint" }
+            ]
         },
         {
             category: "Tools",
-            items: ["ServiceNow", "GTM", "Jira", "Confluence", "VS Code", "Azure", "Outlook"]
+            items: [
+                { name: "ServiceNow", icon: "servicenow" },
+                { name: "GTM", icon: "googletagmanager" },
+                { name: "Jira", icon: "jira" },
+                { name: "Confluence", icon: "confluence" },
+                { name: "VS Code", icon: "visualstudiocode" },
+                { name: "Azure", icon: "azure" },
+                { name: "Outlook", icon: "microsoftoutlook" }
+            ]
         }
     ],
     contact: {
