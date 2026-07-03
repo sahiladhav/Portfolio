@@ -13,6 +13,7 @@ import Interests from '@/components/Interests';
 // Skills Category color mapping - Earthy tones
 const categoryColors: Record<string, { bg: string; text: string; border: string }> = {
   'Processes': { bg: 'bg-[#A8B5A0]/20', text: 'text-[#3B5249]', border: 'border-[#A8B5A0]' },
+  'Product': { bg: 'bg-[#A8B5A0]/20', text: 'text-[#3B5249]', border: 'border-[#A8B5A0]' },
   'Programming': { bg: 'bg-[#D4C5A9]/30', text: 'text-[#3B5249]', border: 'border-[#D4C5A9]' },
   'Database': { bg: 'bg-[#A8B5A0]/30', text: 'text-[#3B5249]', border: 'border-[#A8B5A0]' },
   'Tools': { bg: 'bg-[#D4C5A9]/20', text: 'text-[#3B5249]', border: 'border-[#D4C5A9]' }
@@ -24,10 +25,8 @@ export default function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const roles = [
-    "Project Manager",
-    "Supply Chain Analyst",
-    "Operations Manager",
-    "Product Manager"
+    "Product Manager",
+    "Product Marketing Manager"
   ];
   const typingSpeed = 100;
   const deletingSpeed = 50;
@@ -103,8 +102,8 @@ export default function Home() {
             </div>
 
             <p className="text-[1rem] md:text-[1.125rem] lg:text-[1.25rem] text-[#3B5249]/70 max-w-2xl leading-relaxed">
-              Passionate about supply chain optimization and operations. Seeking{" "}
-              <span className="font-bold text-[#3B5249]">Summer 2026 Internships</span> to drive impact through data-driven decision making.
+              Bridging product and operations — turning complex problems into shipped, measurable solutions.<br />
+              Targeting <span className="font-bold text-[#3B5249]">Full-Time Roles | May 2027 Graduate</span>.
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4 w-full">

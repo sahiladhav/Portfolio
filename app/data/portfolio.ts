@@ -1,14 +1,32 @@
 export const portfolioData = {
     profileImage: "/images/ProfileImage.jpg", // Add your image to public/images/ProfileImage.jpg
-    resumeUrl: "/Resume_of_Sahil_Adhav.pdf", // Add your resume to public/Resume_of_Sahil_Adhav.pdf
+    resumeUrl: "https://drive.google.com/file/d/117bXu0bI0lZyFGVzSTPkunNHjJVR05kb/view?usp=share_link", // Add your resume to public/Resume_of_Sahil_Adhav.pdf
     projects: [
+        {
+            id: 4,
+            title: "AI Beginner Gym Plan Generator",
+            category: "AI Product & Development",
+            images: [
+                "/images/projects/project-4/image1.png",
+                "/images/projects/project-4/image2.png",
+                "/images/projects/project-4/image3.png"
+            ],
+            summary: "Built and shipped a live, AI-powered web app that turns three simple questions (goal, weekly availability, experience level) into a safe, encouraging beginner starting plan, with built-in guardrails against extreme diet or overtraining advice.",
+            challenge: "Gym beginners often quit early — they don't know how to start, overdo it, get sore, and stop. Existing apps overwhelm rather than gently onboard them.",
+            solution: "Built and shipped a live, AI-powered web app that turns three simple questions (goal, weekly availability, experience level) into a safe, encouraging beginner starting plan, with built-in guardrails against extreme diet or overtraining advice.",
+            impact: "Shipped end-to-end from prototype to production; diagnosed and fixed a real production failure by re-architecting the AI integration from a vendor gateway to a direct API call with securely managed environment variables, then redesigned the interface using a safe Git feature-branch workflow.",
+            highlights: [],
+            techStack: ["React", "TypeScript", "Claude Code", "Google Gemini API", "Vercel", "Git", "Lovable"],
+            demoUrl: "https://workout-form-pro.vercel.app",
+            githubUrl: "https://github.com/sahiladhav/workout-form-pro"
+        },
         {
             id: 1,
             title: "Anti-Theft Tracking System",
             category: "Product Development",
             images: [
                 "/images/projects/project-1/image1.png",
-                "/images/projects/project-1/image2.png",
+                "/images/projects/project-1/image2-workflow.png",
                 "/images/projects/project-1/image3.png"
             ],
             summary: "A low-cost, compact IoT security solution designed for real-time asset monitoring and the protection of vulnerable individuals like children or the mentally challenged. It integrates a microcontroller with GSM and GPS/GNSS modules to transmit location coordinates via SMS, which are then visualized on a custom Google Maps web interface. The device is engineered in a portable wearable form factor, bridging hardware-level sensing with cloud-based visualization for immediate oversight.",
@@ -24,28 +42,7 @@ export const portfolioData = {
             techStack: ["C++", "Arduino", "Microcontrollers", "IoT", "GPS", "Google Maps API", "SMS Protocol"],
             githubUrl: "https://github.com/sahiladhav/Anti-Theft-Tracking-Device",
         },
-        {
-            id: 2,
-            title: "Supply Chain Optimization Project",
-            category: "Operations & Analytics",
-            images: [
-                "/images/projects/project-2/image1.png",
-                "/images/projects/project-2/image2.png",
-                "/images/projects/project-2/image3.png"
-            ],
-            summary: "Optimized a nutritional product manufacturer's production and supply chain by developing a holistic framework integrating demand forecasting, Master Production Scheduling (MPS), and Material Requirements Planning (MRP). The project involved creating tailored forecast models for five distinct product lines to manage varying demand structures and accurately identify material flow timing. By applying capacity planning and ProModel simulation, the study addressed critical operational imbalances and established a sustainable, data-driven planning structure.",
-            challenge: "Facing declining profitability after patent expiration, characterized by chronic backorders, high work-in-progress (WIP) levels, and a machinery layout insufficient to meet peak demand.",
-            solution: "Developed a multi-layered system implementing advanced forecasting (Combined Theta, STR), optimized Level aggregate plans, and simulation-based scheduling to manage bottlenecks.",
-            impact: "Engineered a production system that met all forecasted demand with zero backorders and achieved a 42% reduction in cycle times for critical sub-products through optimized scheduling",
-            highlights: [
-                "Lean/5S methodology implementation",
-                "Data-driven demand forecasting",
-                "Process optimization and VSM",
-                "Real-time inventory dashboards"
-            ],
-            techStack: ["Excel", "ProModel", "MRP", "MPS", "Demand Forecasting", "Capacity Planning"],
-            projectUrl: "/Supply_Chain_Report.pdf",
-        },
+
         {
             id: 3,
             title: "Predictive Analysis of Bike-Sharing Demand",
@@ -71,9 +68,7 @@ export const portfolioData = {
     ],
     targetedRoles: [
         "Product Manager",
-        "Supply Chain Analyst",
-        "Operations Manager",
-        "Project Manager"
+        "Product Marketing Manager"
     ],
     about: {
         bio: "Hello, I am Sahil Adhav. I am an Engineering Management, M.S. candidate at San José State University, with a background in Electronics and Telecommunication. I specialize in bridging the gap between technical engineering and business operations through data-driven process optimization and lean methodologies. With experience in cross-functional program analysis and product-focused projects, I am passionate about building efficient systems and scalable products.",
@@ -111,19 +106,26 @@ export const portfolioData = {
             category: "Processes",
             items: [
                 { name: "Lean/5S" },
-                { name: "Gemba" },
-                { name: "Kaizen" },
                 { name: "Six Sigma (DMAIC)" },
-                { name: "Kanban" },
-                { name: "Scrum" },
+                { name: "Kaizen" },
                 { name: "VSM" },
-                { name: "SOPs" },
+                { name: "Kanban" },
                 { name: "Supply Chain Planning" },
-                { name: "Sprint Planning" },
-                { name: "JIT (just-in-time)" },
-                { name: "Data Visualization" },
-                { name: "ERP (basics)" },
-                { name: "Tableau", icon: "/logos/tableau.png" }
+                { name: "SOPs" }
+            ]
+        },
+        {
+            category: "Product",
+            items: [
+                { name: "PRDs" },
+                { name: "User Stories & Epics" },
+                { name: "Funnel & Conversion Analysis" },
+                { name: "A/B Test Design" },
+                { name: "Success Metrics & Instrumentation" },
+                { name: "Roadmapping" },
+                { name: "Stakeholder Alignment" },
+                { name: "Go-to-Market (GTM)" },
+                { name: "Competitive Analysis" }
             ]
         },
         {
@@ -180,7 +182,7 @@ export const portfolioData = {
             },
             {
                 platform: "Resume",
-                url: "/Resume_of_Sahil_Adhav.pdf",
+                url: "https://drive.google.com/file/d/117bXu0bI0lZyFGVzSTPkunNHjJVR05kb/view?usp=share_link",
             }
         ]
     },

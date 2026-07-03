@@ -16,7 +16,7 @@ function ProjectSlideshow({ images, title }: { images: string[], title: string }
     }, [images.length]);
 
     return (
-        <div className="relative w-full h-full group overflow-hidden rounded-3xl shadow-2xl bg-white/5">
+        <div className="relative w-full h-full group">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentIndex}
@@ -30,7 +30,7 @@ function ProjectSlideshow({ images, title }: { images: string[], title: string }
                         src={images[currentIndex]}
                         alt={`${title} - image ${currentIndex + 1}`}
                         fill
-                        className="object-contain p-4 md:p-8"
+                        className="object-contain"
                     />
                 </motion.div>
             </AnimatePresence>
@@ -68,16 +68,16 @@ export default function ProjectGrid() {
                         key={project.id}
                         className="min-h-screen flex items-center relative snap-start py-20"
                     >
-                        <div className="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                        <div className="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
 
                             {/* Visual Side */}
-                            <div className="lg:col-span-6 xl:col-span-7">
+                            <div className="lg:col-span-6 xl:col-span-7 flex flex-col justify-center">
                                 <motion.div
                                     initial={{ opacity: 0, x: -30 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8 }}
-                                    className="aspect-[16/10] w-full"
+                                    className="h-full w-full relative min-h-[400px] lg:min-h-0"
                                 >
                                     <ProjectSlideshow images={project.images} title={project.title} />
                                 </motion.div>
@@ -173,6 +173,11 @@ export default function ProjectGrid() {
                                         {project.githubUrl && (
                                             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="bg-[#3B5249] text-white px-6 py-3 rounded-xl font-bold uppercase text-[10px] tracking-widest hover:opacity-90 transition-all shadow-xl shadow-[#3B5249]/20">
                                                 GitHub
+                                            </a>
+                                        )}
+                                        {project.demoUrl && (
+                                            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="border-2 border-[#3B5249] text-[#3B5249] px-6 py-3 rounded-xl font-bold uppercase text-[10px] tracking-widest hover:bg-[#3B5249] hover:text-white transition-all">
+                                                Live Demo
                                             </a>
                                         )}
                                         {project.projectUrl && project.projectUrl !== "#" && (
