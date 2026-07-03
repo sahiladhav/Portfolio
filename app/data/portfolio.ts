@@ -1,3 +1,19 @@
+export interface Project {
+    id: number;
+    title: string;
+    category: string;
+    images: string[];
+    summary: string;
+    challenge: string;
+    solution: string;
+    impact: string;
+    highlights: string[];
+    techStack: string[];
+    githubUrl?: string;
+    projectUrl?: string;
+    demoUrl?: string;
+}
+
 export const portfolioData = {
     profileImage: "/images/ProfileImage.jpg", // Add your image to public/images/ProfileImage.jpg
     resumeUrl: "https://drive.google.com/file/d/117bXu0bI0lZyFGVzSTPkunNHjJVR05kb/view?usp=share_link", // Add your resume to public/Resume_of_Sahil_Adhav.pdf
@@ -65,7 +81,7 @@ export const portfolioData = {
             techStack: ["Python", "Pandas", "Numpy", "Matplotlib", "Statistical Modeling", "Linear Regression"],
             githubUrl: "https://github.com/sahiladhav/Data-Analysis-EDA-Hypothesis-and-Linear-Regression-"
         }
-    ],
+    ] as Project[],
     targetedRoles: [
         "Product Manager",
         "Product Marketing Manager"
